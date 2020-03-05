@@ -21,4 +21,14 @@ Word.prototype = {
 // console.log(letterList2);
 
 let nextWord = 'canteloupe';
-const coolWord = new Word(nextWord.split(''));
+// const coolWord = new Word(nextWord.split(''));
+let wordCreate = [];
+
+for (let i = 0; i < nextWord.split('').length; i++) {
+  const theLetter = nextWord.split('')[i];
+  wordCreate.push(new Letter(theLetter, true));
+}
+
+const coolWord = new Word(wordCreate);
+console.log(coolWord);
+
