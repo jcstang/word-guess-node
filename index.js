@@ -15,7 +15,7 @@ console.log(chosenWord.getWord());
 
 const userGuessThing = gatherAnswers();
 // console.log(userGuessThing);
-
+chosenWord.getWord();
 
 
 
@@ -26,7 +26,7 @@ function gatherAnswers() {
     listOfGuesses.letters.push(guess);
     hasCorrectLetter(guess);
     chosenWord.getWord();
-    
+
     // return getUserGuess();
   }).then(function() {
     // return listOfGuesses;
@@ -61,7 +61,10 @@ function getUserGuess() {
       }
   ])
     .then(answers => {
+      console.log('this is line 64 index.js');
+      
       console.log(answers);
+      chosenWord.getWord();
     })
     .catch(error => {
       if(error.isTtyError) {
