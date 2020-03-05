@@ -7,15 +7,17 @@ let listOfGuesses = {
   thing: true
 }
 
+
+
 let pickWord = guessWords[Math.floor(Math.random() * guessWords.length)];
 console.log(pickWord);
 const chosenWord = new Word(pickWord);
 console.log(chosenWord.getWord());
+let count = 0;
 
-const userGuessThing = gatherAnswers();
-
-
-
+// works before
+// const userGuessThing = gatherAnswers();
+askQuestion();
 
 
 
@@ -73,4 +75,30 @@ function getUserGuess() {
 
       }
     });
+}
+
+function askQuestion() {
+  let count = 0;
+  if (count < 5) {
+    inquirer.prompt([
+      {
+        type: 'input',
+        name: 'userGuess',
+        message: 'Pick a letter'
+      }
+    ]).thenl(function(answers) {
+      hasCorrectLetter(answers.userGuess)
+      console.log( chosenWord.getWord() );
+      
+      count++;
+      askQuestion();
+    })
+    .catch(error => {
+      if(error.isTtyError) {
+
+      } else {
+
+      }
+    });
+  }
 }
