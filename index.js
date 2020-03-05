@@ -17,6 +17,13 @@ const userGuessThing = gatherAnswers();
 // console.log(userGuessThing);
 // console.log( chosenWord.getWord() );
 
+// while (chosenWord.hasWordBeenGuessed) {
+//   gatherAnswers();
+// }
+
+// for (let i = 0; i < 2; i++) {
+//   gatherAnswers();
+// }
 
 
 
@@ -28,9 +35,12 @@ function gatherAnswers() {
     // chosenWord.getWord();
     // console.log( chosenWord.getWord() );
 
-    // return getUserGuess();
+    return getUserGuess();
+  })
+  .then(function() {
+    return getUserGuess();
   }).then(function() {
-    // return listOfGuesses;
+    return getUserGuess();
   });
 }
 
@@ -41,7 +51,7 @@ function hasCorrectLetter(guess) {
     const element = chosenWord.arrayOfLetters[i];
     // console.log(`element: ${element.displayLetter}`);
     // console.log(`guess: ${guess}`);
-    console.log(`this: ${element.displayLetter} === ${guess}`);
+    console.log(`this: ${element.displayLetter} === ${guess} ${element.displayLetter === guess}`);
     
     
     if(element.displayLetter === guess) {
