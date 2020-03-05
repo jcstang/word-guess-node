@@ -7,28 +7,28 @@ let listOfGuesses = {
   thing: true
 }
 
+
+
 let pickWord = guessWords[Math.floor(Math.random() * guessWords.length)];
 console.log(pickWord);
 const chosenWord = new Word(pickWord);
-// console.log(chosenWord);
 console.log(chosenWord.getWord());
+let count = 0;
 
+// works before
 const userGuessThing = gatherAnswers();
-// console.log(userGuessThing);
-// console.log( chosenWord.getWord() );
-
-
+// askQuestion();
 
 
 
 function gatherAnswers() {
-  return getUserGuess().then(function(guess) {
-    listOfGuesses.letters.push(guess);
-    // hasCorrectLetter(guess);
-    // chosenWord.getWord();
-    // console.log( chosenWord.getWord() );
-
-    // return getUserGuess();
+  return getUserGuess()
+  .then(function(guess) {
+    // listOfGuesses.letters.push(guess);
+    hasCorrectLetter(guess);
+    console.log( chosenWord.getWord() );
+    
+    return getUserGuess();
   }).then(function() {
     // return listOfGuesses;
   });
@@ -39,8 +39,6 @@ function hasCorrectLetter(guess) {
 
   for (let i = 0; i < chosenWord.arrayOfLetters.length; i++) {
     const element = chosenWord.arrayOfLetters[i];
-    // console.log(`element: ${element.displayLetter}`);
-    // console.log(`guess: ${guess}`);
     console.log(`this: ${element.displayLetter} === ${guess}`);
     
     
@@ -76,9 +74,35 @@ function getUserGuess() {
     })
     .catch(error => {
       if(error.isTtyError) {
-        // Prompt couldn't be rendered in the current environment
+
       } else {
-        // Something else when wrong
+
       }
     });
+}
+
+function askQuestion() {
+  let count = 0;
+  if (count < 5) {
+    inquirer.prompt([
+      {
+        type: 'input',
+        name: 'userGuess',
+        message: 'Pick a letter'
+      }
+    ]).thenl(function(answers) {
+      hasCorrectLetter(answers.userGuess)
+      console.log( chosenWord.getWord() );
+      
+      count++;
+      askQuestion();
+    })
+    .catch(error => {
+      if(error.isTtyError) {
+
+      } else {
+
+      }
+    });
+  }
 }

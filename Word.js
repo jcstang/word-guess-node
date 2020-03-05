@@ -2,6 +2,7 @@ const Letter = require('./Letter');
 
 function Word(wordString) {
   this.arrayOfLetters = buildWord(wordString);
+  this.hasWordBeenGuessed = false;
 }
 
 Word.prototype = {
