@@ -39,6 +39,11 @@ function hasCorrectLetter(guess) {
 
   for (let i = 0; i < chosenWord.arrayOfLetters.length; i++) {
     const element = chosenWord.arrayOfLetters[i];
+    // console.log(`element: ${element.displayLetter}`);
+    // console.log(`guess: ${guess}`);
+    console.log(`this: ${element.displayLetter} === ${guess}`);
+    
+    
     if(element.displayLetter === guess) {
       console.log('cool bro!');
       element.toggleHasBeenGuessed();
@@ -65,7 +70,7 @@ function getUserGuess() {
       console.log('this is line 65 index.js');
       
       console.log(answers);
-      hasCorrectLetter(answers);
+      hasCorrectLetter(answers.userGuess);
       console.log( chosenWord.getWord() );
       
     })
