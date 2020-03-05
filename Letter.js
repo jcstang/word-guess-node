@@ -9,10 +9,10 @@ Letter.prototype = {
   getLetter: function() {
   
     if(this.hasBeenGuessed) {
-      return this.displayLetter;
+      return `${this.displayLetter} `;
     }
 
-    return '_';
+    return '_ ';
   }
 }
 

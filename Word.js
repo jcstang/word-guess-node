@@ -1,34 +1,38 @@
 const Letter = require('./Letter');
 
-function Word(letterArr) {
-  this.arrayOfLetters = letterArr;
+function Word(wordString) {
+  this.arrayOfLetters = buildWord(wordString);
 }
 
 Word.prototype = {
   getWord: function() {
-    const returnWord = '';
+    let returnWord = '';
 
     for (let i = 0; i < this.arrayOfLetters.length; i++) {
       const letter = this.arrayOfLetters[i];
       returnWord += letter.getLetter();
     }
-
+    return returnWord;
   }
 }
 
-
-// let letterList2 = guess.split('');
-// console.log(letterList2);
-
-let nextWord = 'canteloupe';
-// const coolWord = new Word(nextWord.split(''));
-let wordCreate = [];
-
-for (let i = 0; i < nextWord.split('').length; i++) {
-  const theLetter = nextWord.split('')[i];
-  wordCreate.push(new Letter(theLetter, true));
+function buildWord(wordString) {
+  let wordCreate = [];
+  for (let i = 0; i < wordString.split('').length; i++) {
+    const theLetter = wordString.split('')[i];
+    wordCreate.push(new Letter(theLetter, false));
+  }
+  
+  return wordCreate;
 }
 
-const coolWord = new Word(wordCreate);
+let nextWord = 'canteloupe';
+
+const coolWord = new Word("canteloupe");
 console.log(coolWord);
+console.log(coolWord.getWord());
+
+
+
+
 
