@@ -30,12 +30,14 @@ function buildWord(wordString) {
 // ===================================================
 // testing out constructor 
 // ===================================================
-const coolWord = new Word("canteloupe");
-console.log(coolWord);
-console.log(coolWord.getWord());
+// const coolWord = new Word("canteloupe");
+// console.log(coolWord);
+// console.log(coolWord.getWord());
 // ^^^ this works GREAT!!!!
 
 // TODO: prepare for module.exports
+
+module.exports = Word;
 
 
 

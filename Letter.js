@@ -16,7 +16,7 @@ Letter.prototype = {
   }
 }
 
-const myLetter = new Letter('A', false);
-console.log(myLetter.getLetter());
+// const myLetter = new Letter('A', false);
+// console.log(myLetter.getLetter());
 
 module.exports = Letter;
