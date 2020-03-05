@@ -26,11 +26,16 @@ function buildWord(wordString) {
   return wordCreate;
 }
 
-let nextWord = 'canteloupe';
 
+// ===================================================
+// testing out constructor 
+// ===================================================
 const coolWord = new Word("canteloupe");
 console.log(coolWord);
 console.log(coolWord.getWord());
+// ^^^ this works GREAT!!!!
+
+// TODO: prepare for module.exports
 
 
 
