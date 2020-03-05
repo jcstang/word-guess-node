@@ -15,7 +15,7 @@ console.log(chosenWord.getWord());
 
 const userGuessThing = gatherAnswers();
 // console.log(userGuessThing);
-chosenWord.getWord();
+// console.log( chosenWord.getWord() );
 
 
 
@@ -24,8 +24,9 @@ chosenWord.getWord();
 function gatherAnswers() {
   return getUserGuess().then(function(guess) {
     listOfGuesses.letters.push(guess);
-    hasCorrectLetter(guess);
-    chosenWord.getWord();
+    // hasCorrectLetter(guess);
+    // chosenWord.getWord();
+    // console.log( chosenWord.getWord() );
 
     // return getUserGuess();
   }).then(function() {
@@ -61,10 +62,12 @@ function getUserGuess() {
       }
   ])
     .then(answers => {
-      console.log('this is line 64 index.js');
+      console.log('this is line 65 index.js');
       
       console.log(answers);
-      chosenWord.getWord();
+      hasCorrectLetter(answers);
+      console.log( chosenWord.getWord() );
+      
     })
     .catch(error => {
       if(error.isTtyError) {
