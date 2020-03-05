@@ -13,10 +13,17 @@ Letter.prototype = {
     }
 
     return '_ ';
+  },
+  toggleHasBeenGuessed: function() {
+    if (this.hasBeenGuessed === true) {
+      this.hasBeenGuessed = false;
+    } else {
+      this.hasBeenGuessed = true;
+    }
   }
 }
 
-const myLetter = new Letter('A', false);
-console.log(myLetter.getLetter());
+// const myLetter = new Letter('A', false);
+// console.log(myLetter.getLetter());
 
 module.exports = Letter;
