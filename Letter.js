@@ -13,6 +13,13 @@ Letter.prototype = {
     }
 
     return '_ ';
+  },
+  toggleHasBeenGuessed: function() {
+    if (this.hasBeenGuessed === true) {
+      this.hasBeenGuessed = false;
+    } else {
+      this.hasBeenGuessed = true;
+    }
   }
 }
 
