@@ -10,20 +10,11 @@ let listOfGuesses = {
 let pickWord = guessWords[Math.floor(Math.random() * guessWords.length)];
 console.log(pickWord);
 const chosenWord = new Word(pickWord);
-// console.log(chosenWord);
 console.log(chosenWord.getWord());
 
 const userGuessThing = gatherAnswers();
-// console.log(userGuessThing);
-// console.log( chosenWord.getWord() );
 
-// while (chosenWord.hasWordBeenGuessed) {
-//   gatherAnswers();
-// }
 
-// for (let i = 0; i < 2; i++) {
-//   gatherAnswers();
-// }
 
 
 
@@ -31,16 +22,9 @@ const userGuessThing = gatherAnswers();
 function gatherAnswers() {
   return getUserGuess().then(function(guess) {
     listOfGuesses.letters.push(guess);
-    // hasCorrectLetter(guess);
-    // chosenWord.getWord();
-    // console.log( chosenWord.getWord() );
 
-    return getUserGuess();
-  })
-  .then(function() {
-    return getUserGuess();
   }).then(function() {
-    return getUserGuess();
+    // return listOfGuesses;
   });
 }
 
@@ -49,9 +33,7 @@ function hasCorrectLetter(guess) {
 
   for (let i = 0; i < chosenWord.arrayOfLetters.length; i++) {
     const element = chosenWord.arrayOfLetters[i];
-    // console.log(`element: ${element.displayLetter}`);
-    // console.log(`guess: ${guess}`);
-    console.log(`this: ${element.displayLetter} === ${guess} ${element.displayLetter === guess}`);
+    console.log(`this: ${element.displayLetter} === ${guess}`);
     
     
     if(element.displayLetter === guess) {
