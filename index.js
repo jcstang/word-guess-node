@@ -16,15 +16,19 @@ console.log(chosenWord.getWord());
 let count = 0;
 
 // works before
-// const userGuessThing = gatherAnswers();
-askQuestion();
+const userGuessThing = gatherAnswers();
+// askQuestion();
 
 
 
 function gatherAnswers() {
-  return getUserGuess().then(function(guess) {
-    listOfGuesses.letters.push(guess);
-
+  return getUserGuess()
+  .then(function(guess) {
+    // listOfGuesses.letters.push(guess);
+    hasCorrectLetter(guess);
+    console.log( chosenWord.getWord() );
+    
+    return getUserGuess();
   }).then(function() {
     // return listOfGuesses;
   });

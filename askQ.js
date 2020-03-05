@@ -10,7 +10,7 @@ module.exports = {
         name: 'userGuess',
         message: 'Pick a letter'
       }
-    ]).thenl(function(answers) {
+    ]).then(function(answers) {
       hasCorrectLetter(answers.userGuess)
       console.log( chosenWord.getWord() );
       
