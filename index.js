@@ -2,21 +2,23 @@ const Word = require('./Word');
 const guessWords = require('./guessWords');
 const inquirer = require('inquirer');
 
-let listOfGuesses = {
-  letters: [],
-  thing: true
-}
+// let listOfGuesses = {
+//   letters: [],
+//   thing: true
+// }
 
 
 
 let pickWord = guessWords[Math.floor(Math.random() * guessWords.length)];
 console.log(pickWord);
+
 const chosenWord = new Word(pickWord);
 console.log(chosenWord.getWord());
-let count = 0;
 
 // works before
 const userGuessThing = gatherAnswers();
+
+// recursion was off
 // askQuestion();
 
 
@@ -42,7 +44,7 @@ function hasCorrectLetter(guess) {
     console.log(`this: ${element.displayLetter} === ${guess}`);
     
     
-    if(element.displayLetter === guess) {
+    if(element.displayLetter.toLowerCase() === guess.toLowerCase()) {
       console.log('cool bro!');
       element.toggleHasBeenGuessed();
 
