@@ -1,108 +1,53 @@
-const Word = require('./Word');
-const guessWords = require('./guessWords');
+// const Word = require('./Word');
+const listOfWords = require('./guessWords');
 const inquirer = require('inquirer');
 
-let listOfGuesses = {
-  letters: [],
-  thing: true
-}
+
+
+// ===================================================
+// ** start **
+// ===================================================
+const chosenWord = listOfWords.createNewWord();
+promptPlayer();
 
 
 
-let pickWord = guessWords[Math.floor(Math.random() * guessWords.length)];
-console.log(pickWord);
-const chosenWord = new Word(pickWord);
-console.log(chosenWord.getWord());
-let count = 0;
+function promptPlayer() {
+  console.log(chosenWord.getWord());
 
-// works before
-const userGuessThing = gatherAnswers();
-// askQuestion();
-
-
-
-function gatherAnswers() {
-  return getUserGuess()
-  .then(function(guess) {
-    // listOfGuesses.letters.push(guess);
-    hasCorrectLetter(guess);
-    console.log( chosenWord.getWord() );
+  return inquirer.prompt([
+    {
+      type: 'input',
+      name: 'playerGuess',
+      message: 'Pick a letter!'
+    }
+  ]).then(answers => {
+    // TODO: did the user win/lose/run out of guesses???
+    console.log(`You have selected: ${answers.playerGuess}\n`);
+    if (!hasCorrectLetter(answers.playerGuess)) {
+      console.log('boooooo!!!');
+      
+    }
     
-    return getUserGuess();
-  }).then(function() {
-    // return listOfGuesses;
-  });
+    promptPlayer();
+    
+  }).catch(err => {
+    console.log(err);
+  })
 }
 
 function hasCorrectLetter(guess) {
-  let retVal = false;
-
+  let retValue = false;
   for (let i = 0; i < chosenWord.arrayOfLetters.length; i++) {
     const element = chosenWord.arrayOfLetters[i];
     console.log(`this: ${element.displayLetter} === ${guess}`);
-    
-    
-    if(element.displayLetter === guess) {
-      console.log('cool bro!');
+    if (element.displayLetter.toLowerCase() === guess) {
       element.toggleHasBeenGuessed();
 
-      retVal = true;
+      retValue = true;
     }
     
   }
 
-  return retVal;
-}
-
-
-
-function getUserGuess() {
-  return inquirer.prompt([
-      {
-        type: 'input',
-        name: 'userGuess',
-        message: 'Pick a letter'
-      }
-  ])
-    .then(answers => {
-      console.log('this is line 65 index.js');
-      
-      console.log(answers);
-      hasCorrectLetter(answers.userGuess);
-      console.log( chosenWord.getWord() );
-      
-    })
-    .catch(error => {
-      if(error.isTtyError) {
-
-      } else {
-
-      }
-    });
-}
-
-function askQuestion() {
-  let count = 0;
-  if (count < 5) {
-    inquirer.prompt([
-      {
-        type: 'input',
-        name: 'userGuess',
-        message: 'Pick a letter'
-      }
-    ]).thenl(function(answers) {
-      hasCorrectLetter(answers.userGuess)
-      console.log( chosenWord.getWord() );
-      
-      count++;
-      askQuestion();
-    })
-    .catch(error => {
-      if(error.isTtyError) {
-
-      } else {
-
-      }
-    });
-  }
+  return retValue;
 }

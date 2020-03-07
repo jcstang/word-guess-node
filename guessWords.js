@@ -1,3 +1,5 @@
+const Word = require('./Word');
+
 const guessWords = [
   'Canteloupe',
   'Basket',
@@ -8,7 +10,22 @@ const guessWords = [
   'Outside',
   'Book',
   'Grapes',
-  'Sidewalk'
+  'Sidewalk',
+  'New York',
+  'Baseball',
+  'Gecko',
+  'Australia',
+  'Birthday'
 ];
 
-module.exports = guessWords;
+const createNewWord = function() {
+  let randomishNumber = Math.floor(Math.random() * guessWords.length);
+  let pickWord = guessWords[randomishNumber];
+
+  return new Word(pickWord);
+}
+
+module.exports = {
+  guessWords: guessWords,
+  createNewWord: createNewWord
+};
