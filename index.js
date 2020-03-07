@@ -41,7 +41,7 @@ function hasCorrectLetter(guess) {
   for (let i = 0; i < chosenWord.arrayOfLetters.length; i++) {
     const element = chosenWord.arrayOfLetters[i];
     console.log(`this: ${element.displayLetter} === ${guess}`);
-    if (element.displayLetter === guess) {
+    if (element.displayLetter.toLowerCase() === guess) {
       element.toggleHasBeenGuessed();
 
       retValue = true;
