@@ -22,7 +22,6 @@ function promptPlayer() {
       message: 'Pick a letter!'
     }
   ]).then(answers => {
-    // TODO: did the user win/lose/run out of guesses???
     console.log(`You have selected: ${answers.playerGuess}\n`);
     if (!hasCorrectLetter(answers.playerGuess)) {
       console.log('boooooo!!!');
