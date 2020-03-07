@@ -37,17 +37,17 @@ function promptPlayer() {
 }
 
 function hasCorrectLetter(guess) {
-
+  let retValue = false;
   for (let i = 0; i < chosenWord.arrayOfLetters.length; i++) {
     const element = chosenWord.arrayOfLetters[i];
     console.log(`this: ${element.displayLetter} === ${guess}`);
     if (element.displayLetter === guess) {
       element.toggleHasBeenGuessed();
 
-      return true;
+      retValue = true;
     }
     
   }
 
-  return false;
+  return retValue;
 }
