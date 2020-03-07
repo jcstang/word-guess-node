@@ -10,21 +10,11 @@ const inquirer = require('inquirer');
 const chosenWord = listOfWords.createNewWord();
 promptPlayer();
 
-// startGame();
-
-
-// function startGame() {
-//   console.log(chosenWord.getWord());
-  
-  
-//   // console.log(chosenWord.getWord());
-
-// }
 
 
 function promptPlayer() {
   console.log(chosenWord.getWord());
-  
+
   return inquirer.prompt([
     {
       type: 'input',
@@ -34,10 +24,30 @@ function promptPlayer() {
   ]).then(answers => {
     // TODO: did the user win/lose/run out of guesses???
     console.log(`You have selected: ${answers.playerGuess}\n`);
+    if (!hasCorrectLetter(answers.playerGuess)) {
+      console.log('boooooo!!!');
+      
+    }
     
     promptPlayer();
     
   }).catch(err => {
     console.log(err);
   })
+}
+
+function hasCorrectLetter(guess) {
+
+  for (let i = 0; i < chosenWord.arrayOfLetters.length; i++) {
+    const element = chosenWord.arrayOfLetters[i];
+    console.log(`this: ${element.displayLetter} === ${guess}`);
+    if (element.displayLetter === guess) {
+      element.toggleHasBeenGuessed();
+
+      return true;
+    }
+    
+  }
+
+  return false;
 }
