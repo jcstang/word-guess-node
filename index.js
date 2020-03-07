@@ -1,50 +1,30 @@
-const Word = require('./Word');
+// const Word = require('./Word');
 const listOfWords = require('./guessWords');
 const inquirer = require('inquirer');
 
+
+
 // ===================================================
-// start game
+// ** start **
 // ===================================================
-startGame();
+const chosenWord = listOfWords.createNewWord();
+promptPlayer();
+
+// startGame();
 
 
-function startGame() {
-  const chosenWord = createNewWord();
-  // console.log(chosenWord);
-  console.log(chosenWord.getWord());
-
-  promptPlayer();
-
-}
-
-function createNewWord() {
-  let randomishNumber = Math.floor(Math.random() * listOfWords.length);
-  let pickWord = listOfWords[randomishNumber];
-
-  // **** print pick word
-  console.log(pickWord);
+// function startGame() {
+//   console.log(chosenWord.getWord());
   
+  
+//   // console.log(chosenWord.getWord());
 
-  return new Word(pickWord);
-}
-
-// function keepAsking() {
-//   return promptPlayer().then(answer => {
-//     //stuff
-//   })
-//   .then(answer => {
-//     //stuff
-//   })
-//   .then(answer => {
-//     //stuff
-//   })
-//   .then(answer => {
-//     //stuff
-//   })
 // }
 
 
 function promptPlayer() {
+  console.log(chosenWord.getWord());
+  
   return inquirer.prompt([
     {
       type: 'input',
@@ -52,9 +32,9 @@ function promptPlayer() {
       message: 'Pick a letter!'
     }
   ]).then(answers => {
-    // somthing
-    console.log(`cool guess bro: ${answers.playerGuess}\n`);
-    // check the guess
+    // TODO: did the user win/lose/run out of guesses???
+    console.log(`You have selected: ${answers.playerGuess}\n`);
+    
     promptPlayer();
     
   }).catch(err => {
