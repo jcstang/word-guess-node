@@ -1,6 +1,7 @@
 // const Word = require('./Word');
 const listOfWords = require('./guessWords');
 const inquirer = require('inquirer');
+const chalk = require('chalk');
 
 
 
@@ -22,9 +23,9 @@ function promptPlayer() {
       message: 'Pick a letter!'
     }
   ]).then(answers => {
-    console.log(`You have selected: ${answers.playerGuess}\n`);
+    console.log(chalk.green(`You have selected: ${chalk.blueBright(answers.playerGuess)}\n`));
     if (!hasCorrectLetter(answers.playerGuess)) {
-      console.log('boooooo!!!');
+      console.log(chalk.red('boooooo!!!'));
       
     }
     
@@ -37,12 +38,13 @@ function promptPlayer() {
 
 function hasCorrectLetter(guess) {
   let retValue = false;
+  
   for (let i = 0; i < chosenWord.arrayOfLetters.length; i++) {
     const element = chosenWord.arrayOfLetters[i];
-    console.log(`this: ${element.displayLetter} === ${guess}`);
+    // console.log(`this: ${element.displayLetter} === ${guess}`);
+
     if (element.displayLetter.toLowerCase() === guess) {
       element.toggleHasBeenGuessed();
-
       retValue = true;
     }
     
