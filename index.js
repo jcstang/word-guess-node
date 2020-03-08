@@ -16,12 +16,12 @@ promptPlayer();
 
 
 function promptPlayer() {
-  console.log(chosenWord.getWord());
+  console.log(`${chosenWord.getWord()}\n`);
   console.log(`You have ${chalk.red(guessCount)} guesses left!`);
   
   
 
-  if(hasWon(chosenWord)) {
+  if(helper.hasWon(chosenWord)) {
     winningHandler();
   }
 
@@ -70,13 +70,13 @@ function promptPlayer() {
 //   return retValue;
 // }
 
-function hasWon(word) {
-  return word.wordWinCheck();
-}
+// function hasWon(word) {
+//   return word.wordWinCheck();
+// }
 
 
 function winningHandler() {
-  console.log(chalk.bgGreen('\nwinnnnnnning!!!!!!\n'));
+  console.log(chalk.green('\nwinnnnnnning!!!!!!\n'));
   process.exit();
 }
 

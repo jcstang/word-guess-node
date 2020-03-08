@@ -13,7 +13,11 @@ function hasCorrectLetter(playerGuess, chosenWord) {
   return retValue;
 }
 
-functio'''']\[;;;;name, ]
-¢orts = {
-  hasCorrectLetter: hasCorrectLetter
+function hasWon(word) {
+  return word.wordWinCheck();
+}
+
+module.exports = {
+  hasCorrectLetter: hasCorrectLetter,
+  hasWon: hasWon
 }
