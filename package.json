@@ -1,0 +1,25 @@
+{
+  "name": "11-constructors",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "inquirer": "^7.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcstang/word-guess-node.git"
+  },
+  "author": "Jacob Stanger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcstang/word-guess-node/issues"
+  },
+  "homepage": "https://github.com/jcstang/word-guess-node#readme"
+}
