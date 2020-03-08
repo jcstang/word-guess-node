@@ -2,6 +2,7 @@
 const listOfWords = require('./guessWords');
 const inquirer = require('inquirer');
 const chalk = require('chalk');
+const helper = require('./game-helper');
 
 
 
@@ -31,8 +32,9 @@ function promptPlayer() {
       message: 'Pick a letter!'
     }
   ]).then(answers => {
-    console.log(chalk.green(`You have selected: ${chalk.blueBright(answers.playerGuess)}\n`));
-    if (!hasCorrectLetter(answers.playerGuess)) {
+    // console.log(chalk.green(`You have selected: ${chalk.blueBright(answers.playerGuess)}\n`));
+
+    if (!helper.hasCorrectLetter(answers.playerGuess, chosenWord)) {
       console.log(chalk.red('boooooo!!!'));
 
       guessCount--;
@@ -49,23 +51,24 @@ function promptPlayer() {
   })
 }
 
-function hasCorrectLetter(guess) {
-  let retValue = false;
+
+// function hasCorrectLetter(guess) {
+//   let retValue = false;
   
-  for (let i = 0; i < chosenWord.arrayOfLetters.length; i++) {
-    const element = chosenWord.arrayOfLetters[i];
-    // console.log(`this: ${element.displayLetter} === ${guess}`);
+//   for (let i = 0; i < chosenWord.arrayOfLetters.length; i++) {
+//     const element = chosenWord.arrayOfLetters[i];
+//     // console.log(`this: ${element.displayLetter} === ${guess}`);
 
-    if (element.displayLetter.toLowerCase() === guess) {
-      // element.toggleHasBeenGuessed();
-      element.letterHasBeenGuessed();
-      retValue = true;
-    }
+//     if (element.displayLetter.toLowerCase() === guess) {
+//       // element.toggleHasBeenGuessed();
+//       element.letterHasBeenGuessed();
+//       retValue = true;
+//     }
     
-  }
+//   }
 
-  return retValue;
-}
+//   return retValue;
+// }
 
 function hasWon(word) {
   return word.wordWinCheck();
@@ -73,14 +76,11 @@ function hasWon(word) {
 
 
 function winningHandler() {
-  //foooo
-  console.log(chalk.greenBright('\nwinnnnnnning!!!!!!\n'));
+  console.log(chalk.bgGreen('\nwinnnnnnning!!!!!!\n'));
   process.exit();
-  // promptPlayer();
 }
 
 function losingHandler() {
-  //baaar
   console.log(chalk.bgRedBright('\nyou loose!!!!'));
   process.exit();
 }
