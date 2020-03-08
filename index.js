@@ -8,6 +8,7 @@ const chalk = require('chalk');
 // ===================================================
 // ** start **
 // ===================================================
+let guessCount = 9;
 const chosenWord = listOfWords.createNewWord();
 promptPlayer();
 
@@ -15,6 +16,13 @@ promptPlayer();
 
 function promptPlayer() {
   console.log(chosenWord.getWord());
+  console.log(`You have ${chalk.red(guessCount)} guesses left!`);
+  
+  
+
+  if(hasWon(chosenWord)) {
+    winningHandler();
+  }
 
   return inquirer.prompt([
     {
@@ -44,11 +52,28 @@ function hasCorrectLetter(guess) {
     // console.log(`this: ${element.displayLetter} === ${guess}`);
 
     if (element.displayLetter.toLowerCase() === guess) {
-      element.toggleHasBeenGuessed();
+      // element.toggleHasBeenGuessed();
+      element.letterHasBeenGuessed();
       retValue = true;
     }
     
   }
 
   return retValue;
+}
+
+function hasWon(word) {
+  return word.wordWinCheck();
+}
+
+
+function winningHandler() {
+  //foooo
+  console.log(chalk.greenBright('\nwinnnnnnning!!!!!!\n'));
+  process.exit();
+  // promptPlayer();
+}
+
+function losingHandler() {
+  //baaar
 }

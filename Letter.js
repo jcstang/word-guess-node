@@ -20,6 +20,9 @@ Letter.prototype = {
     } else {
       this.hasBeenGuessed = true;
     }
+  },
+  letterHasBeenGuessed: function() {
+    this.hasBeenGuessed = true;
   }
 }
 

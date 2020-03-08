@@ -14,6 +14,16 @@ Word.prototype = {
       returnWord += letter.getLetter();
     }
     return returnWord;
+  },
+  wordWinCheck: function() {
+    for (const key in this.arrayOfLetters) {
+      const element = this.arrayOfLetters[key];
+      if(!element.hasBeenGuessed) {
+        return false;
+      }
+    }
+
+    return true;
   }
 }
 
