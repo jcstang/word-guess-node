@@ -34,6 +34,11 @@ function promptPlayer() {
     console.log(chalk.green(`You have selected: ${chalk.blueBright(answers.playerGuess)}\n`));
     if (!hasCorrectLetter(answers.playerGuess)) {
       console.log(chalk.red('boooooo!!!'));
+
+      guessCount--;
+      if(guessCount <= 0) {
+        losingHandler();
+      }
       
     }
     
@@ -76,4 +81,6 @@ function winningHandler() {
 
 function losingHandler() {
   //baaar
+  console.log(chalk.bgRedBright('\nyou loose!!!!'));
+  process.exit();
 }
