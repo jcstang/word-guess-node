@@ -27,5 +27,6 @@ const createNewWord = function() {
 
 module.exports = {
   guessWords: guessWords,
-  createNewWord: createNewWord
+  createNewWord: createNewWord,
+  hi: 'hello'
 };

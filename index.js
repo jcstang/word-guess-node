@@ -10,7 +10,11 @@ const helper = require('./game-helper');
 // ** start **
 // ===================================================
 let guessCount = 9;
+console.log(listOfWords.hi);
+
 const chosenWord = listOfWords.createNewWord();
+
+
 promptPlayer();
 
 
